@@ -1,3 +1,0 @@
-import subprocess
-
-with open('log_deletion')
