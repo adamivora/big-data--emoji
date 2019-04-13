@@ -24,14 +24,17 @@ known_subnets = ['192.168.50.0/24', '192.168.56.0/24']
 
 def main():
     with open('fwdata.csv') as data, open('malicious_ips', 'w') as out:
+        mals = set()
         for line in data:
             line = line.split(';')
             if is_not_known(line[1]):
                 outstr = line[1] + "\n"
-                out.write(outstr)
+                mals.add(outstr)
                 print(line)
             if is_not_known(line[2]):
                 outstr = line[2] + "\n"
-                out.write(outstr)
+                mals.add(outstr)
                 print(line)
+        for elem in mals:
+            out.write(elem)
 main()
