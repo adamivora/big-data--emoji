@@ -22,8 +22,14 @@ def is_not_known(ip_addr):
 
 known_subnets = ['192.168.50.0/24', '192.168.56.0/24']
 
-with open('fwdata.csv') as data:
-    for line in data:
-        line = line.split(';')
-        if is_not_known(line[1]) or is_not_known(line[2]):
-            print(line)
+def main():
+    with open('fwdata.csv') as data, open('malicious_ips') as out:
+        for line in data:
+            line = line.split(';')
+            if is_not_known(line[1]):
+                out.write(line[1])
+                print(line)
+            if is_not_known(line[2]):
+                out.write(line[2])
+                print(line)
+main()
