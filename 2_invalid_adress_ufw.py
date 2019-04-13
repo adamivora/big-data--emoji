@@ -17,7 +17,6 @@ def is_not_known(ip_addr):
     known_subnets = ['192.168.50.101', '192.168.50.102', '192.168.50.105','192.168.50.106', '192.168.50.254', '192.168.56.1','192.168.56.50','192.168.56.254','192.168.1.1', '192.168.50.255', '192.168.56.255' ]
     if is_private(ip_addr):
         if ip_addr not in known_subnets:
-            print(ip_addr)
             return True
     return False
 
